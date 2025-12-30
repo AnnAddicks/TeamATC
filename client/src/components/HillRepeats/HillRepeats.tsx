@@ -54,7 +54,7 @@ const styles: (theme: Theme) => StyleRules<string> = theme =>
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
+      fontWeight: 400,
     },
     progress: {
       margin: theme.spacing(2),
@@ -301,8 +301,11 @@ class HillRepeats extends Component<Props, MyState> {
                                 value={repeatDateTime.toDateString()}
 
                                 selected={repeatDateTime}
-                                onSelect={date => this.handleDateChange(date)} // when day is clicked
-                                onChange={date => this.handleDateChange(date)} // only when value has changed
+                                onSelect={(date) => this.handleDateChange(date)}
+                                onChange={(date) => this.handleDateChange(Array.isArray(date) ? date[0] : date)}
+
+                                //onSelect={date => this.handleDateChange(date)} // when day is clicked
+                                //onChange={date => this.handleDateChange(date)} // only when value has changed
 
                                 openToDate={new Date()}
                                 autoFocus={true}
